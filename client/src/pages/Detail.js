@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import Logo from "../MMlogo.png";
+import Welcome from "./Welcome"
 
 function Detail(props) {
   const [book, setBook] = useState({});
@@ -28,8 +29,14 @@ function Detail(props) {
           </Jumbotron>
         </Col>
       </Row>
-      <Row></Row>
-      <Row></Row>
+      <Container>
+        <Row>
+    
+        <Col size="6">
+      <Welcome></Welcome>
+  </Col>
+      </Row>
+      </Container>
     </Container>
   );
 }
