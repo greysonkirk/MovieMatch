@@ -18,10 +18,6 @@ module.exports = function(sequelize, DataTypes) {
                 len: [4, 15]
             }
         },
-        zipCode: {
-            type: DataTypes.INTEGER
-            
-        },
         partnerId: {
             type: DataTypes.INTEGER
            

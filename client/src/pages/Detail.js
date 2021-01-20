@@ -31,12 +31,11 @@ function Detail(props) {
       </Row>
       <Container>
         <Row>
-            <Container fluid main
-            >
-          <Col size="6">
-              <Welcome></Welcome>
-          </Col>
+          <Col size="12">
+            <Container fluid >
+              <Welcome/>
             </Container> 
+          </Col>
         </Row>
       </Container>
     </Container>

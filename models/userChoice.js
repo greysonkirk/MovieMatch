@@ -10,15 +10,15 @@ module.exports = function(sequelize, DataTypes) {
                 type: DataTypes.INTEGER
 
             },
-            restaurantId: {
+            movieId: {
                 type: DataTypes.INTEGER
 
             },
-            restaurantImg: {
+            movieImg: {
                 type: DataTypes.STRING
 
             },
-            restaurantName: {
+            movieName: {
                 type: DataTypes.STRING
 
             }

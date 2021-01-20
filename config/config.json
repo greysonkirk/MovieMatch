@@ -1,9 +1,9 @@
 {
     "development": {
-        "username": "qks4a9hjmu9eckbg",
-        "password": "sab9v7qlj1bdjmnt",
-        "database": "zenponvyjembt7t5",
-        "host": "ixnzh1cxch6rtdrx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+        "username": "root",
+        "password": "rootroot",
+        "database": "moviematch",
+        "host": "127.0.0.1",
         "dialect": "mysql"
     },
     "test": {

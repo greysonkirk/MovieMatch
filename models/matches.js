@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
                 isNumeric: true
             }
         },
-        restaurantId: {
+        movieId: {
             type: DataTypes.INTEGER,
             allowNull: false,
             validate: {
