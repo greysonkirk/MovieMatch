@@ -1,0 +1,14 @@
+.delete-btn {
+  float: right;
+  color: #e74944;
+}
+.login-btn {
+background-color: #63a3d8 ;
+  color: #196eb3;
+  margin: 10px;
+}
+.signup-btn {
+  background-color: #e77e7a;
+   
+  color: #b3322e;
+}

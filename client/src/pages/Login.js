@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Welcome() {
+export default function Login() {
   return (
     <form>
   <div className="mb-3">
