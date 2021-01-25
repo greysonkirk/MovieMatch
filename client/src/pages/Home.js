@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { LoginBtn, SignUpBtn } from "../components/Btn";
-import { Link, useParams } from "react-router-dom";
+// import { Link, useParams } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
-import API from "../utils/API";
+
 import Logo from "../MMlogo.png";
 
-function Home(props) {
+
+function Home() {
+
 
   return (
     <Container main>
@@ -43,9 +45,8 @@ function Home(props) {
                   <LoginBtn />
                 </a>
                 <a href="/signup">
-                <SignUpBtn />
+                  <SignUpBtn />
                 </a>
-                
               </div>
             </Container>
           </Col>
