@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   getMovies: function (service, type, genre, page) {
-    return axios.get("https://netflix-unofficial.p.rapidapi.com/api/search", {
+    return axios.get("https://streaming-availability.p.rapidapi.com/search/basic", {
       params: {
         country: "us",
         service: service,

@@ -32,9 +32,11 @@
     "express-session": "^1.17.1",
     "if-env": "^1.0.4",
     "mysql2": "^1.7.0",
+    "node-sass": "^4.14.1",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "react-scripts": "^4.0.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "swiper": "^6.4.8"
   }
 }

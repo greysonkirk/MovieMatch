@@ -1,0 +1,27 @@
+.title{
+    position: absolute;
+    top: 15px;
+    left: 16px;
+    background-color: rgba(204, 72, 72, 0.5) ;
+    font-size: 2rem;
+}
+
+.card{
+   width: 55%;
+    align-content: center;
+    justify-content: center;
+    background-color: rgb(139, 145, 145);
+    border-width: thick;
+    border:solid;
+    border: red;
+    margin: auto;
+    
+}
+
+.img{
+    
+    margin-top: 50px;
+    text-align: center;
+    margin: auto;
+ 
+}

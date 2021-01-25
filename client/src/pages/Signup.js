@@ -29,7 +29,7 @@ export default function Signup() {
   function signUpUser(signUpData) {
     API.signUpUser(signUpData)
       .then(() => {
-        
+
           API.moviePage();
       })
       .catch(() => {
@@ -71,7 +71,7 @@ export default function Signup() {
                 <Input
                   onChange={handleInputChange}
                   name="username"
-                  placeholder="Usersame (required)"
+                  placeholder="Username (required)"
                 />
                 <Input
                   onChange={handleInputChange}
