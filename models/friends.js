@@ -8,16 +8,12 @@ module.exports = function(sequelize, DataTypes) {
         partnerId: {
             type: DataTypes.INTEGER
            
+        },
+        friendUserName: {
+            type: DataTypes.STRING
+           
         }
     })
-
-    Friends.associate = function(models) {
-            Friends.belongsTo(models.User, {
-                onDelete: 'CASCADE',
-                foreignKey: {
-                    allowNull: false
-                }
-            })
-        }
+ 
     return Friends
 }

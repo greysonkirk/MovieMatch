@@ -32,7 +32,7 @@ export default function Login() {
     API.loginUser(loginData)
       .then((res) => {
         console.log(res.data)
-        history.push("/profile")
+        history.push("/Profile")
       })
       .catch(() => {
         console.log("failed");

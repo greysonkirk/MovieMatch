@@ -4,38 +4,23 @@ module.exports = function(sequelize, DataTypes) {
         // The email cannot be null, and must be a proper email before creation
         userId: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                isNumeric: true
-            }
+  
         },
         partnerId: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                isNumeric: true
-            }
+    
         },
         movieId: {
             type: DataTypes.INTEGER,
-            allowNull: false,
-            validate: {
-                isNumeric: true
-            }
+        
         },
-        restaurantImg: {
+        movieImg: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isNumeric: true
-            }
+            
         },
-        restaurantName: {
+        movieName: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                isNumeric: true
-            }
+          
         }
     })
 

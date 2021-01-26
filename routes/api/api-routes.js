@@ -19,9 +19,9 @@ router.get("/start", isAuthenticated, (req, res) => {
 
 
 router.get("/users", isAuthenticated, (req,res) => {
-  usersController.findAll(req,res).then((result) => {
+  usersController.findAll().then((result) => {
     res.json(result)
-  })
+  }) 
 });
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
@@ -31,7 +31,7 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
     email: req.user.email,
     id: req.user.id,
   });
-  res.redirect("movies");
+  
 });
 
 router.post("/signup", (req, res) => {

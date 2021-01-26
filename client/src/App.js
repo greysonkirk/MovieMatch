@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import Movies from "./pages/Movies";
 import MoviesBuild from "./components/SwipeChoice";
 import Start from "./pages/Start";
+import Profile from "./pages/Profile";
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path={"/start"}>
             <Start />
+          </Route>
+          <Route exact path={"/profile"}>
+            <Profile />
           </Route>
 
         </Switch>

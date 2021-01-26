@@ -3,17 +3,17 @@ const db = require("../models");
 // Defining methods for the booksController
 module.exports = {
   create: function (user) {
-   return db.User.create(user)
-   
+    return db.User.create(user);
+  },
+  createFriend: function (user) {
+    return db.Friend.create(user);
   },
   findOne: function (req, res) {
-    db.User.findOne({ email: req.body.email, password: req.body.password })
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.status(422).json(err));
+   return db.User.findOne({ email: req.body.email, password: req.body.password })
+  
   },
-  findAll: function (req, res) {
-    db.User.findAll()
-      .then((dbModel) => res.json(dbModel))
-      .catch((err) => res.status(422).json(err));
+  findAll: function () {
+  return  db.User.findAll({ attributes: { exclude: ["password"] } })
+      
   },
 };
