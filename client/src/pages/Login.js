@@ -4,10 +4,11 @@ import Jumbotron from "../components/Jumbotron";
 import { Input, FormBtn } from "../components/Form";
 import Logo from "../MMlogo.png";
 import API from "../utils/API";
+import {Route, Redirect, Link, useHistory } from "react-router-dom";
 
 export default function Login() {
   const [login, setLogin] = useState({});
-
+  let history = useHistory();
   function handleInputChange(event) {
     const { name, value } = event.target;
     setLogin({ ...login, [name]: value });
@@ -31,11 +32,12 @@ export default function Login() {
     API.loginUser(loginData)
       .then((res) => {
         console.log(res.data)
-         
+        history.push("/profile")
       })
       .catch(() => {
         console.log("failed");
       });
+      
   }
 
   return (

@@ -18,32 +18,16 @@ import SwiperChoice from "../components/SwipeChoice";
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 function Movies() {
   const [movies, setMovies] = useState({});
-
-  // const [pref, setPref] = useState({
-  //   service: "hulu",
-  //   type: "movie",
-  //   genre: 18,
-  //   page: 1,
-  // });
-
+ 
   useEffect(() => {
-    API.getMovies("hulu", "movie", 18, 1).then((res) =>
-      setMovies(res.data.results)
+    API.getMovies().then((res) => {
+      console.log(res.data) 
+ 
+      setMovies(res.data)
+    }
     );
   }, []);
-
-  // function getMovies(service, type, genre, page) {
-  //   API.getMoviesAPI(service, type, genre, page).then((res) =>
-  //     setMovies(res.data.results)
-  //   );
-  //   console.log(movies);
-  //   console.log(movies.length);
-  // }
  
-
-  // function sendMovies(movieData){
-  //   API.sendMoviesSQL(movieData)
-  // }
   return (
     <Container fluid>
       <Row>
@@ -68,10 +52,10 @@ function Movies() {
                   {movies.map(
                     (movie) => (
                       console.log(movie),
-                      console.log(movie.posterURLs[500]),
+                      console.log(movie.img),
                       (
                         <>
-                          <SwiperSlide key={movie.imdbID}>
+                          <SwiperSlide key={movie.movieId}>
                             <SwiperChoice {...movie}/>
                           </SwiperSlide>
                      

@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 const genres = [
   { name: "Biography", value: 1 },
-  { name: "Film Noir", value: 2 },
-  { name: "Game Show", value: 3 },
   { name: "Musical", value: 4 },
   { name: "Sport", value: 5 },
   { name: "Short", value: 6 },
@@ -39,23 +36,38 @@ export default function Start() {
   const [provider, setProvider] = useState();
   const [mediatype, setType] = useState();
   const [genre, setGenre] = useState();
-const [movies, setMovies] = useState({})
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    console.log(movies);
+    if (movies.length == 0) {
+      console.log("nodata");
+    } else {
+      console.log("sql");
+      API.sendMoviesSQL(movies);
+    }
+  }, [movies]);
+
   function sendData(e) {
- 
-    console.log("sdfgh");
-    console.log(provider);
-    console.log(mediatype)
-    console.log(genre)
-    API.getMoviesAPI(provider.toLowerCase(),mediatype,genre,1).then((res) => setMovies(res.data)).then(console.log(movies))
-    // API.getMoviesAPI(provider,mediatype,genre,2)
-    // API.getMoviesAPI(provider,mediatype,genre,3)
-
-sendMovies(movies)
-
+    API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 1).then(
+      (res) => {
+        setMovies(res.data);
+      }
+    );
+    API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 2).then(
+      (res) => {
+        setMovies(...movies, res.data);
+      }
+    );
+    API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 3).then(
+      (res) => {
+        setMovies(...movies, res.data);
+      }
+    );
+    sendMovies(movies);
   }
- function sendMovies(movies){
-     console.log(movies.data.imbdID)
- }
+
+  function sendMovies(movies) {}
   function handleProviderSelect(provider) {
     setProvider(provider);
     console.log(provider);
@@ -87,7 +99,7 @@ sendMovies(movies)
               <Container main>
                 <div className="centerContent">
                   <h3> Select your Streaming Providers</h3>
-                  <form >
+                  <form>
                     {" "}
                     {providers.length ? (
                       <>
@@ -150,21 +162,16 @@ sendMovies(movies)
                           <h3 className="mt-3">Select a Genre</h3>
                         </label>
                         <select
-                        value={genre}
-                        onChange={(e) => handleGenreSelect(e.target.value)}
+                          value={genre}
+                          onChange={(e) => handleGenreSelect(e.target.value)}
                           className="custom-select mr-sm-2"
                           id="inlineFormCustomSelect"
                         >
-                          <option
-                            defaultValue
-                           
-                          >
-                            Choose...
-                          </option>
+                          <option defaultValue>Choose...</option>
                           {genres ? (
                             <>
                               {genres.map((genre) => (
-                                <option   key={genre.name} value={genre.value}>
+                                <option key={genre.name} value={genre.value}>
                                   {genre.name}
                                 </option>
                               ))}
@@ -175,13 +182,16 @@ sendMovies(movies)
                         </select>
                       </div>
                     </div>
-       
                   </form>
-                    <div className="centerContent my-5">
-                      <button className="btn btn-success btn-lg" type="submit" onClick={sendData}>
-                        Lets Go!
-                      </button>
-                    </div>
+                  <div className="centerContent my-5">
+                    <button
+                      className="btn btn-success btn-lg"
+                      type="submit"
+                      onClick={sendData}
+                    >
+                      Lets Go!
+                    </button>
+                  </div>
                 </div>
               </Container>
             </Col>

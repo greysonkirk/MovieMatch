@@ -31,7 +31,7 @@ export default function Signup() {
     API.signUpUser(signUpData)
       .then(() => {
 
-        history.push("/start")
+        history.push("/profile")
       })
       .catch(() => {
         console.log("failed");

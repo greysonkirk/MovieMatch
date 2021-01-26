@@ -1,13 +1,7 @@
-// Creating our User model
 module.exports = function (sequelize, DataTypes) {
-  const movies = sequelize.define("movies", {
-    // The email cannot be null, and must be a proper email before creation
-    initUserId: {
+  const Movie = sequelize.define("Movie", {
+    initUser: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        isNumeric: true,
-      },
     },
     movieId: {
       type: DataTypes.STRING,
@@ -19,7 +13,7 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     desc: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     img: {
       type: DataTypes.STRING,
@@ -42,5 +36,5 @@ module.exports = function (sequelize, DataTypes) {
   });
 
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  return movies;
+  return Movie;
 };

@@ -18,9 +18,14 @@ export default {
       },
     });
   },
+  getMovies: function () {
+    console.log("In movie API")
+    return axios.get("/api/movies")
+      
+  },
 
   sendMoviesSQL: function(movieData){
-    return axios.post("/api/sendMovies", movieData)
+    return axios.post("/api/sendMovies", movieData.results)
   },
 
 
@@ -31,14 +36,13 @@ export default {
     
   },
 
-  moviePage: function(){
-    console.log("In movie API")
-    return axios.get("/api/movies")
-  },
 
   loginUser: function(loginData){
     console.log("init login")
     return axios.post("/api/login",loginData )
-  }
+  },
 
+  findUsers: function(){
+    return axios.get("/api/users")
+  }
 };
