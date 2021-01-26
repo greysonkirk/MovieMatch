@@ -4,7 +4,7 @@ import Logo from "../../../src/MMlogo.png";
 function Nav() {
   return (
 
-<nav className="navbar navbar-expand-lg navbar-light bg-info">
+<nav className="navbar navbar-expand-lg navbar-dark bg-secondary ">
   <div className="container-fluid">
     <a className="navbar-brand" href="#">Movie
       <img src={Logo} alt="logo" height="50" className="d-inline-block align-top"></img>

@@ -27,6 +27,7 @@ export default function Login() {
     
   }
   function loginUser(loginData) {
+    console.log("test")
     API.loginUser(loginData)
       .then((res) => {
         console.log(res.data)
@@ -70,8 +71,8 @@ export default function Login() {
               <form>
                 <Input
                   onChange={handleInputChange}
-                  name="username"
-                  placeholder="Username (required)"
+                  name="email"
+                  placeholder="email (required)"
                 />
                 <Input
                   onChange={handleInputChange}
@@ -81,7 +82,7 @@ export default function Login() {
                 />
                 <FormBtn
                   disabled={
-                    !(login.username && login.password)
+                    !(login.email && login.password)
                   }
                   onClick={handleFormSubmit}
                 >

@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export default {
-  getMovies: function (service, type, genre, page) {
-    return axios.get("https://streaming-availability.p.rapidapi.com/search/basic", {
+  getMoviesAPI: function (service, type, genre, page) {
+    return axios.get("https://streaming-availability.p.rapidapi.com/search/pro", {
       params: {
         country: "us",
         service: service,
@@ -10,8 +10,7 @@ export default {
         order_by: "year",
         genre: genre,
         page: page,
-        desc: "true",
-        language: "en",
+        language: "en"
       },
       headers: {
         "x-rapidapi-key": "30f344500fmsh8f56d37bef3e83dp127a8cjsn4a7a31ba2c70",
@@ -19,6 +18,11 @@ export default {
       },
     });
   },
+
+  sendMoviesSQL: function(movieData){
+    return axios.post("/api/sendMovies", movieData)
+  },
+
 
   signUpUser: function (signUpData) {
     console.log("In API")
@@ -30,6 +34,11 @@ export default {
   moviePage: function(){
     console.log("In movie API")
     return axios.get("/api/movies")
+  },
+
+  loginUser: function(loginData){
+    console.log("init login")
+    return axios.post("/api/login",loginData )
   }
 
 };

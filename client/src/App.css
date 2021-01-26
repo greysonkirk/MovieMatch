@@ -5,8 +5,14 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: linear-gradient(180deg,rgb(248, 249, 250), rgb(25, 62, 100) )no-repeat center center fixed;
+    background: linear-gradient(180deg,rgb(248, 249, 250), rgb(18, 18, 19) )no-repeat center center fixed;
   
     
   }
-   
+  .centerContent{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+  }

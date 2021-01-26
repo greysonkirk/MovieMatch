@@ -4,10 +4,11 @@ import Jumbotron from "../components/Jumbotron";
 import { Input, FormBtn } from "../components/Form";
 import Logo from "../MMlogo.png";
 import API from "../utils/API";
-import {Route, Redirect, Link } from "react-router-dom";
+import {Route, Redirect, Link, useHistory } from "react-router-dom";
 
 export default function Signup() {
   const [signUp, setSignUp] = useState({});
+  let history = useHistory();
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -30,7 +31,7 @@ export default function Signup() {
     API.signUpUser(signUpData)
       .then(() => {
 
-          API.moviePage();
+        history.push("/start")
       })
       .catch(() => {
         console.log("failed");

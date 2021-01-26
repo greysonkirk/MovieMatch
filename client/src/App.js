@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Movies from "./pages/Movies";
 import MoviesBuild from "./components/SwipeChoice";
+import Start from "./pages/Start";
 
 
 function App() {
@@ -29,6 +30,9 @@ function App() {
           </Route>
           <Route exact path={"/moviesbuild"}>
             <MoviesBuild />
+          </Route>
+          <Route exact path={"/start"}>
+            <Start />
           </Route>
 
         </Switch>

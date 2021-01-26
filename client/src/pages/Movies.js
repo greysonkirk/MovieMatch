@@ -2,7 +2,7 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import React, { useState, useEffect } from "react";
 import API from "../utils/API";
-import { Input, FormBtn } from "../components/Form";
+// import { Input, FormBtn } from "../components/Form";
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,12 +19,12 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 function Movies() {
   const [movies, setMovies] = useState({});
 
-  const [pref, setPref] = useState({
-    service: "hulu",
-    type: "movie",
-    genre: 18,
-    page: 1,
-  });
+  // const [pref, setPref] = useState({
+  //   service: "hulu",
+  //   type: "movie",
+  //   genre: 18,
+  //   page: 1,
+  // });
 
   useEffect(() => {
     API.getMovies("hulu", "movie", 18, 1).then((res) =>
@@ -32,14 +32,18 @@ function Movies() {
     );
   }, []);
 
-  function getMovies(service, type, genre, page) {
-    API.getMovies(service, type, genre, page).then((res) =>
-      setMovies(res.data.results)
-    );
-    console.log(movies);
-    console.log(movies.length);
-  }
+  // function getMovies(service, type, genre, page) {
+  //   API.getMoviesAPI(service, type, genre, page).then((res) =>
+  //     setMovies(res.data.results)
+  //   );
+  //   console.log(movies);
+  //   console.log(movies.length);
+  // }
+ 
 
+  // function sendMovies(movieData){
+  //   API.sendMoviesSQL(movieData)
+  // }
   return (
     <Container fluid>
       <Row>
