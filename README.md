@@ -16,6 +16,7 @@ This app uses Movie of Tthe Night's streaming availabilty api.
 To limit amount of API calls, the initial users api call is stored into a MySQL db and that populates the "friends" movie page. 
 
 ### Issues
+Main issue: Error 503 while added a movie picked in Huroku app, but not on localhost. 
 This app isnt completed yet, so there's too many to list.
 
 ![](ss1.PNG)
