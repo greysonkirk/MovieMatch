@@ -63,23 +63,7 @@ export default function Start() {
      setMovies(test)
       console.log(test)
     });
-    // API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 1).then(
-    //   (res) => {
-    //     console.log(res.data)
-    //     setMovies(res.data.results);
 
-    //   }
-    // );
-    // API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 2).then(
-    //   (res) => {
-    //     setMovies(...movies, res.data);
-    //   }
-    // );
-    // API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 3).then(
-    //   (res) => {
-    //     setMovies(...movies, res.data);
-    //   }
-    // );
    
   }
 
