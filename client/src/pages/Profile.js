@@ -36,6 +36,20 @@ export default function Profile() {
     }
   }, [friends]);
 
+  useEffect(() => {
+    if (sessions) {
+      console.log(sessions);
+    } else {
+      console.log("sql");
+      API.findSessions().then((res) => {
+        setSessions(res.data);
+        console.log(sessions);
+      });
+    }
+  }, [sessions])
+
+
+
   function handleFriendClick(e) {
     console.log("add friend");
     console.log(e.username);
@@ -43,9 +57,13 @@ export default function Profile() {
 
     const newFriend = { partnerId: e.userId, username: e.username };
     console.log(newFriend);
-    // const friendData = []
+     
     API.makeFriend(newFriend).then((res) => {
       console.log(res.data);
+    });
+    API.findFriends().then((res) => {
+      setFriends(res.data);
+      console.log(users);
     });
   }
 
@@ -69,9 +87,14 @@ export default function Profile() {
     const newSession = { partnerId: e.userId, username: e.username };
 
     API.sessionStart(newSession).then((res) => {
-      history.push("/start")
+     console.log(res.data)
     })
+    history.push("/start")
+  }
 
+  function handleGetSessionClick(e){
+    console.log("go to movies")
+    history.push("/movies")
   }
 
 
@@ -146,6 +169,37 @@ export default function Profile() {
                                 userId: friend.partnerId,
                                 username: friend.friendUserName,
                               })}
+                              className="btn btn-primary float-right"
+                            >
+                              Start Session!
+                            </button>
+                          </li>
+                        ))}
+                      </>
+                    ) : (
+                      <h3>Find Some Friends To Swipe With!!!</h3>
+                    )}
+                  </ul>
+                </div>
+                <div className="overflow-auto d-block ">
+                  <h2 className="text-light">Open Sessions</h2>
+                  <ul className="list-group">
+                    {sessions ? (
+                      <>
+                        {sessions.map((session) => (
+                          <li
+                            className="list-group-item list-group-item-action"
+                            key={session.id}
+                             
+                            value={session.partnerId}
+                          >
+                            {session.friendUserName}{" "}
+                            <button
+                            value={session.partnerId}
+                              onClick={() =>handleGetSessionClick({
+                                userId: session.partnerId,
+                                username: session.friendUserName,
+                              })}
                               className="btn btn-danger float-right"
                             >
                               Start Swiping!
@@ -154,7 +208,7 @@ export default function Profile() {
                         ))}
                       </>
                     ) : (
-                      <h3>Something went wrong!</h3>
+                      <h3>Start A Session With A Friend!!!</h3>
                     )}
                   </ul>
                 </div>

@@ -6,6 +6,7 @@ const sessionController = require("../../controllers/sessionController");
 const userChoiceController = require("../../controllers/userChoiceController");
 var router = require("express").Router();
 const isAuthenticated = require("../../config/isAuthenticated");
+ 
 
 router.get("/movies", (req, res) => {
   console.log(req.user);
@@ -30,6 +31,13 @@ router.get("/users", isAuthenticated, (req, res) => {
     res.json(result);
   });
 });
+
+router.get("/sessions", isAuthenticated, (req,res) =>{
+ 
+  sessionController.findAll(req,res).then((result) => {
+    res.json(result)
+  })
+})
 
 router.post("/friend", isAuthenticated, (req, res) => {
   console.log(req.body);

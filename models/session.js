@@ -9,6 +9,14 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         isNumeric: true
       }
+    },
+    partnerId: {
+        type: DataTypes.INTEGER
+       
+    },
+    friendUserName: {
+        type: DataTypes.STRING
+       
     }
   })
 

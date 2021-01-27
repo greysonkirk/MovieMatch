@@ -8,9 +8,7 @@ console.log(req.body)
       userId: req.user.id,
       partnerId: req.body.partnerId,
       friendUserName: req.body.username,
-    }); ({
-    
-    });
+    }); 
     return db.Friends.create(newFriend) 
   },
 

@@ -41,36 +41,36 @@ export default function Start() {
   let history = useHistory();
   useEffect(() => {
     console.log(movies);
-    if (movies.length == 0) {
+    if (movies.length = 0) {
       console.log("nodata");
     } else {
       console.log("sql");
       API.sendMoviesSQL(movies);
+      redirectMovies()
     }
   }, [movies]);
 
-  function sendData(e) {
+   function sendData(e) {
     API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 1).then(
       (res) => {
         setMovies(res.data);
       }
     );
-    API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 2).then(
-      (res) => {
-        setMovies(...movies, res.data);
-      }
-    );
-    API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 3).then(
-      (res) => {
-        setMovies(...movies, res.data);
-      }
-    );
-    sendMovies(movies);
-   
+    // API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 2).then(
+    //   (res) => {
+    //     setMovies(...movies, res.data);
+    //   }
+    // );
+    // API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 3).then(
+    //   (res) => {
+    //     setMovies(...movies, res.data);
+    //   }
+    // );
+     
   }
 
 
-  function redirectMovies(){
+   function redirectMovies(){
     console.log("should redirect")
     history.push("/movies")
   }
