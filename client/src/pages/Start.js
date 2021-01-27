@@ -46,7 +46,7 @@ export default function Start() {
     } else {
       console.log("sql");
       API.sendMoviesSQL(movies);
-      redirectMovies()
+    
     }
   }, [movies]);
 
@@ -66,7 +66,7 @@ export default function Start() {
     //     setMovies(...movies, res.data);
     //   }
     // );
-     
+    redirectMovies()
   }
 
 
