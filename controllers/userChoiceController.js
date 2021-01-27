@@ -18,7 +18,7 @@ module.exports = {
     });({
     
     });
-    return db.UserChoice.create(newMovies)
+    db.UserChoice.create(newMovies).then((result) => res.json(result) )
     
      
   },

@@ -48,7 +48,7 @@ router.post("/friend", isAuthenticated, (req, res) => {
 
 router.post("/sendmovies", movieController.create);
 
-router.post("/sendChoice", userChoiceController.create);
+router.post("/sendChoice", userChoiceController.create)
 
 router.post("/session", isAuthenticated, (req, res) => {
   console.log("create session");
