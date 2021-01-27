@@ -32,7 +32,7 @@ export default {
   },
 
   sendMoviesSQL: function (movieData) {
-    return axios.post("/api/sendMovies", movieData.results);
+    return axios.post("/api/sendMovies", movieData);
   },
   sendChoice: function (movieData) {
     return axios.post("/api/sendChoice", movieData);

@@ -41,21 +41,35 @@ export default function Start() {
   let history = useHistory();
   useEffect(() => {
     console.log(movies);
-    if (movies.length = 0) {
+    if (movies.length === 0) {
       console.log("nodata");
     } else {
       console.log("sql");
-      API.sendMoviesSQL(movies);
-    
+      API.sendMoviesSQL(movies).then( redirectMovies);
+      console.log(movies)
+       
     }
   }, [movies]);
 
    function sendData(e) {
-    API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 1).then(
-      (res) => {
-        setMovies(res.data);
-      }
-    );
+
+    Promise.all([
+      API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 1),
+      API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 2),
+      API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 3),
+    ]).then((values) => {
+      console.log(values[0].data.results,values[1].data.results,values[2].data.results);
+      const test =([...movies,...values[0].data.results,...values[1].data.results,...values[2].data.results])
+     setMovies(test)
+      console.log(test)
+    });
+    // API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 1).then(
+    //   (res) => {
+    //     console.log(res.data)
+    //     setMovies(res.data.results);
+
+    //   }
+    // );
     // API.getMoviesAPI(provider.toLowerCase(), mediatype, genre, 2).then(
     //   (res) => {
     //     setMovies(...movies, res.data);
@@ -66,7 +80,7 @@ export default function Start() {
     //     setMovies(...movies, res.data);
     //   }
     // );
-    redirectMovies()
+   
   }
 
 
