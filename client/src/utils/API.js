@@ -44,5 +44,14 @@ export default {
 
   findUsers: function(){
     return axios.get("/api/users")
+  },
+  
+  makeFriend: function(friendData){
+    console.log(friendData)
+    return axios.post("api/friend", friendData)
+  },
+
+  findFriends: function(){
+    return axios.get("api/findfriends")
   }
 };

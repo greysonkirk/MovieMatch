@@ -10,7 +10,7 @@ require('dotenv').config()
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 3001
 const db = require('./models')
-
+ 
 
 // Creating express app and configuring middleware needed for authentication
 const app = express()
@@ -21,8 +21,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
  
-
-
+ 
 // We need to use sessions to keep track of our user's login status
 app.use(
   session({ secret: 'keyboard cat', resave: true, saveUninitialized: true })

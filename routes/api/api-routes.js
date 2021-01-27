@@ -1,13 +1,21 @@
 const passport = require("../../config/passport");
+const friendController = require("../../controllers/friendController");
 const usersController = require("../../controllers/usersController");
 const movieController = require("../../controllers/movieController");
 var router = require("express").Router();
 const isAuthenticated = require("../../config/isAuthenticated");
+ 
+ 
 
-router.get("/movies",(req, res) => {
-  console.log(req.user)
+router.get("/movies", (req, res) => {
+  console.log(req.user);
   console.log("should query");
-  movieController.findAll(req,res).then((result) => {
+  movieController.findAll(req, res).then((result) => {
+    res.json(result);
+  });
+});
+router.get("/findfriends",(req,res) => {
+  friendController.findAll(req, res).then((result) => {
     res.json(result);
   });
 });
@@ -17,12 +25,23 @@ router.get("/start", isAuthenticated, (req, res) => {
   res.redirect("start");
 });
 
-
-router.get("/users", isAuthenticated, (req,res) => {
+router.get("/users", isAuthenticated, (req, res) => {
   usersController.findAll().then((result) => {
-    res.json(result)
-  }) 
+    res.json(result);
+  });
 });
+
+router.post("/friend", isAuthenticated, (req, res) => {
+  console.log(req.body)
+  friendController
+    .createFriend(req,res).then((result) => {
+      res.json(result);
+    }); 
+});
+
+router.post("/sendmovies", movieController.create);
+
+
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
   console.log("login");
@@ -31,7 +50,6 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
     email: req.user.email,
     id: req.user.id,
   });
-  
 });
 
 router.post("/signup", (req, res) => {
