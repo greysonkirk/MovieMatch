@@ -27,7 +27,9 @@ export default {
   sendMoviesSQL: function(movieData){
     return axios.post("/api/sendMovies", movieData.results)
   },
-
+  sendChoice: function(movieData){
+    return axios.post("/api/sendChoice", movieData)
+  },
 
   signUpUser: function (signUpData) {
     console.log("In API")

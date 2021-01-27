@@ -3,6 +3,7 @@ const friendController = require("../../controllers/friendController");
 const usersController = require("../../controllers/usersController");
 const movieController = require("../../controllers/movieController");
 const sessionController = require("../../controllers/sessionController");
+const userChoiceController = require("../../controllers/userChoiceController");
 var router = require("express").Router();
 const isAuthenticated = require("../../config/isAuthenticated");
 
@@ -38,6 +39,8 @@ router.post("/friend", isAuthenticated, (req, res) => {
 });
 
 router.post("/sendmovies", movieController.create);
+
+router.post("/sendChoice", userChoiceController.create);
 
 router.post("/session", isAuthenticated, (req, res) => {
   console.log("create session");

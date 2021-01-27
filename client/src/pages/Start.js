@@ -66,7 +66,7 @@ export default function Start() {
       }
     );
     sendMovies(movies);
-    redirectMovies();
+   
   }
 
 
@@ -209,3 +209,4 @@ export default function Start() {
     </div>
   );
 }
+ 
