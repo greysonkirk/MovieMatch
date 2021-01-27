@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
+import {Route, Redirect, Link, useHistory } from "react-router-dom";
 
 const genres = [
   { name: "Biography", value: 1 },
@@ -37,7 +38,7 @@ export default function Start() {
   const [mediatype, setType] = useState();
   const [genre, setGenre] = useState();
   const [movies, setMovies] = useState([]);
-
+  let history = useHistory();
   useEffect(() => {
     console.log(movies);
     if (movies.length == 0) {
@@ -65,6 +66,13 @@ export default function Start() {
       }
     );
     sendMovies(movies);
+    redirectMovies();
+  }
+
+
+  function redirectMovies(){
+    console.log("should redirect")
+    history.push("/movies")
   }
 
   function sendMovies(movies) {}

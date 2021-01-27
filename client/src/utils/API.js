@@ -53,5 +53,9 @@ export default {
 
   findFriends: function(){
     return axios.get("api/findfriends")
+  },
+  sessionStart: function(){
+    console.log("api session")
+    return axios.post("api/session")
   }
 };

@@ -3,9 +3,8 @@ import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Input, FormBtn } from "../components/Form";
-import { Dropdown } from "semantic-ui-react";
- 
 
+import {Route, Redirect, Link, useHistory } from "react-router-dom";
 export default function Profile() {
   const [users, setUsers] = useState();
   const [filtUsers, setFiltUsers] = useState();
@@ -13,21 +12,18 @@ export default function Profile() {
   const [sessions, setSessions] = useState();
   const [search, setSearch] = useState("");
   // const [newFriend, setNewFriend] = useState({})
-
+  let history = useHistory();
   useEffect(() => {
-    console.log(users);
     if (users) {
       console.log(users);
     } else {
       console.log("sql");
       API.findUsers().then((res) => {
         setUsers(res.data);
-
-        console.log(users);
       });
     }
   }, [users]);
-  useEffect(() => {  
+  useEffect(() => {
     console.log(friends);
     if (friends) {
       console.log(friends);
@@ -35,19 +31,18 @@ export default function Profile() {
       console.log("sql");
       API.findFriends().then((res) => {
         setFriends(res.data);
-
         console.log(users);
       });
     }
-  }, [users]);
+  }, [friends]);
 
   function handleFriendClick(e) {
-    console.log("add friend")
-   console.log(e.username)
-   console.log(e.userId)
+    console.log("add friend");
+    console.log(e.username);
+    console.log(e.userId);
 
-   const newFriend = ({partnerId: e.userId, username: e.username})
- console.log(newFriend)
+    const newFriend = { partnerId: e.userId, username: e.username };
+    console.log(newFriend);
     // const friendData = []
     API.makeFriend(newFriend).then((res) => {
       console.log(res.data);
@@ -67,6 +62,19 @@ export default function Profile() {
     setFiltUsers(filteredUser);
   }
 
+  function handleSessionCick(e){
+    console.log("session start")
+    console.log(e.username);
+    console.log(e.userId);
+    const newSession = { partnerId: e.userId, username: e.username };
+
+    API.sessionStart(newSession).then((res) => {
+      history.push("/start")
+    })
+
+  }
+
+
   return (
     <div>
       <Container main>
@@ -81,7 +89,7 @@ export default function Profile() {
           <Row>
             <Container main>
               <Col size="12">
-                <div class="overflow-auto d-block">
+                <div className="overflow-auto d-block">
                   <Input
                     type="text"
                     id="search"
@@ -89,21 +97,24 @@ export default function Profile() {
                     placeholder="Search for Friends"
                     onChange={handleSearchChange}
                   />
-                  <ul class="list-group">
+                  <ul className="list-group">
                     {filtUsers ? (
                       <>
                         {filtUsers.map((user) => (
                           <li
-                            class="list-group-item list-group-item-action"
+                            className="list-group-item list-group-item-action"
                             key={user.id}
                             value={user.username}
                           >
                             {user.username}{" "}
                             <button
-                            onClick={() => handleFriendClick({userId: user.id, username:user.username})}
-                           
+                              onClick={() =>
+                                handleFriendClick({
+                                  userId: user.id,
+                                  username: user.username,
+                                })
+                              }
                               className="btn btn-primary float-right"
-                              
                             >
                               Add Friend
                             </button>
@@ -111,28 +122,33 @@ export default function Profile() {
                         ))}
                       </>
                     ) : (
-                      <h3>Something went wrong!</h3>
+                      <></>
                     )}
                   </ul>
                 </div>
 
-                <div class="overflow-auto d-block ">
+                <div className="overflow-auto d-block ">
                   <h2 className="text-light">Friends List</h2>
-                  <ul class="list-group">
+                  <ul className="list-group">
                     {friends ? (
                       <>
                         {friends.map((friend) => (
                           <li
-                            class="list-group-item list-group-item-action"
+                            className="list-group-item list-group-item-action"
                             key={friend.id}
-                            onclick={handleFriendClick}
-                            value={friend.id}
+                             
+                            value={friend.partnerId}
                           >
-                            {friend.username}{" "}
-                            <button 
-                            // onclick={handleFriendClick()}
-                            className="btn btn-danger float-right">
-                              Start Session
+                            {friend.friendUserName}{" "}
+                            <button
+                            value={friend.partnerId}
+                              onClick={() =>handleSessionCick({
+                                userId: friend.partnerId,
+                                username: friend.friendUserName,
+                              })}
+                              className="btn btn-danger float-right"
+                            >
+                              Start Swiping!
                             </button>
                           </li>
                         ))}
